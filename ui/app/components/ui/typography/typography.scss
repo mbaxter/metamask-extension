@@ -1,0 +1,35 @@
+.typography {
+  @include Paragraph;
+
+  @each $variant in map-keys($typography-variants) {
+    &--#{$variant} {
+      @include typography($variant);
+    }
+  }
+
+  @each $variant, $color in $color-map {
+    &--color-#{$variant} {
+      color: $color;
+    }
+  }
+
+  @each $variant, $weight in $typography-font-weights {
+    &--weight-#{$variant} {
+      font-weight: $weight;
+    }
+  }
+
+  &--align-center {
+    text-align: center;
+  }
+
+  &--align-right {
+    text-align: right;
+  }
+
+  @for $i from 1 through 8 {
+    &--spacing-#{$i} {
+      margin: #{$i * 4}px auto;
+    }
+  }
+}
